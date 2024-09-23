@@ -10,15 +10,20 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var bottomLabel: UILabel!
+    var isShown: Bool = false;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello, world!")
+        bottomLabel.alpha = 0
     }
 
-
-    @IBAction func makeSomeGreeting(_ sender: Any) {
-        
+    @IBAction func showTextButtonTapped(_ sender: Any) {
+        isShown.toggle()
+        print("animating show btn, isShown is \(isShown)")
+        UIView.animate(withDuration: 0.150){
+            self.bottomLabel.alpha = self.isShown ? 1 : 0
+        }
     }
 }
 
